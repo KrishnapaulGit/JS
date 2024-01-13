@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Unlimited Color</title>
+</head>
+<body>
+
+    <h1>Start to change BG color per second </h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+
+<!-- Gerenrate a Random Color -->
+<script>
+
+    const colorCode = function(){
+        const hex = "0123456789ABCDEF"
+
+        let color ='#'
+
+        for(let i =0; i<6;i++){
+           color+=hex[Math.floor(Math.random()*16)] 
+        }
+
+        return color;
+    }
+    //console.log(colorCode())
+
+    let interValId;
+    const startColorChange=function(){
+        if(interValId==null){
+       interValId= setInterval(bgColor,100)
+        }
+        function bgColor(){ document.body.style.backgroundColor=colorCode();}
+
+      
+    }
+    const stopColorChange=function(){
+        clearInterval(interValId)
+        interValId=null;
+    }
+
+    document.getElementById('start')
+    .addEventListener('click',startColorChange);
+
+    document.getElementById('stop')
+    .addEventListener('click',stopColorChange)
+</script>
+</html>

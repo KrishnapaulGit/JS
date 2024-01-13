@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HideShow</title>
+</head>
+<body>
+
+    <div id="container" style="align-items: center; background-color:#212121; color:#fff">
+        <p> assign "test" value to Test variable</p>
+
+        <div id="codesection" style="align-content: center;">
+            let Test;<br><br>
+            Test = <input id="inputField" type="text" value="" style="color:blue">
+            <br><br>
+            <button id="submit">Submit</button>
+            <button id="show">Show Answer</button>
+
+        </div>
+    </div>
+    
+</body>
+<script>
+    const Submit= document.getElementById('submit');
+
+    Submit.addEventListener('click',
+    function(){
+        //console.log("clicked")
+        const inputText= document.getElementById('inputField').value;
+
+        //console.log(inputText)
+
+        if(inputText === "test"){
+           // console.log("Correct")
+        const container= document.getElementById('container');
+
+        container.style.backgroundColor="green";
+
+        container.innerHTML=`<h1>Correct</h1> <br><br> <button style="margin-bottom:10px;color: blue;"> Next Question</button>`
+
+        }else{
+            const container= document.getElementById('container');
+
+            container.style.backgroundColor="red";
+    
+            container.innerHTML=`<h1>Correct</h1> <br><br> <button style="margin-bottom:10px;color: red; " id="tryAgain"> Try Again</button>`
+
+            document.getElementById('tryAgain')
+            .addEventListener('click', function(){
+                window.location.href="HideShow.html"
+            })
+    
+        }
+        
+    })
+
+
+    const Show = document.getElementById('show');
+
+    Show.addEventListener('click', function(){
+        //console.log("Show")
+
+        const inputText= document.getElementById('inputField');
+            inputText.value="test"
+            Show.innerHTML="Hide Answer"
+
+
+        //console.log(Show.innerHTML)
+
+        if(inputText.value ==="test"){
+            Show.addEventListener('click',function(){
+            //console.log("Hide")
+            inputText.value=""
+            Show.innerHTML="Show Answer"
+            window.location.href="HideShow.html"
+   
+
+            })
+        }
+
+    })
+
+
+
+
+</script>
+</html>

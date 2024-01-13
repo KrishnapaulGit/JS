@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM | Async</title>
+</head>
+<body>
+    <h1>DOM | Async</h1>
+
+    <button id="stop">Stop</button>
+    <button id="start">Start</button>
+</body>
+<script>
+    /*
+    setInterval(function(){
+        console.log("Krishna",Date.now());
+    },1000);*/
+
+
+    const sayDate = function(name){
+        let date = new Date();
+        console.log(name, date.toLocaleTimeString())
+    }
+
+
+    let interValStop;
+    function startInterval(){
+        if(interValStop == null)
+       interValStop=(sayDate,1000,"Krishna")
+    }
+
+
+    document.getElementById('stop')
+    .addEventListener('click', ()=>{
+       clearInterval(interValStop);
+
+       console.log("Stop");
+
+    })
+    document.getElementById('start')
+    .addEventListener('click', ()=>{
+        setInterval(sayDate,1000,"Krishna")
+
+       console.log("Start");
+
+    })
+</script>
+</html>
