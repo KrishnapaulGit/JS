@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM | Async</title>
+</head>
+<body>
+    <h1>DOM | Async</h1>
+
+    <button id="stop">Stop</button>
+</body>
+<script>
+    const sayName = function(){
+        console.log("My Name is Krishna")
+    }
+    /*
+    setTimeout(function(){
+        console.log("Krishna")
+    },2000)*/
+
+    setTimeout(sayName,2000);
+
+
+    //document.querySelector('h1').innerHTML="Async DOM"
+
+    const changeH1= function(){
+        document.querySelector('h1').innerHTML="Async DOM"
+
+    }
+
+    //setTimeout(changeH1,2000);
+
+    const stopChange=setTimeout(changeH1,2000);
+
+
+
+    document.querySelector('#stop').
+    addEventListener('click',()=>{
+        clearTimeout(stopChange);
+        console.log("Stoppppped")
+    });
+</script>
+</html>
