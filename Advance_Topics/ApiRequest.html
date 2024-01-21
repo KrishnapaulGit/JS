@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Request</title>
+</head>
+<body style="background-color: #212121; color:#fff">
+    Value	State	Description
+0	UNSENT	Client has been created. open() not called yet.
+1	OPENED	open() has been called.
+2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
+3	LOADING	Downloading; responseText holds partial data.
+4	DONE	The operation is complete.
+<!-- <img src="" alt="" id="imageUrl"> -->
+</body>
+
+<script>
+    const xhr = new XMLHttpRequest();
+    const requestUrl = `https://api.github.com/users/krishnapaulgit`;
+    xhr.open('GET',requestUrl)
+    //console.log("Send")
+    let name=null;
+    let img=null;
+    let repo=null;
+    xhr.onreadystatechange=function(){
+        console.log(xhr.readyState);
+
+        if(xhr.readyState===4){
+            //const data = this.responseText;
+            const data = JSON.parse(this.responseText);
+            //console.log(this.responseText.name)
+            console.log(data)
+            name=data.name
+            img=data.avatar_url
+            repo=data.public_repos
+            console.log(img)
+
+
+
+
+             //Creating Card
+
+    const div= document.createElement('div')
+    const image = document.createElement('img')
+    const userName = document.createElement('p')
+    userName.innerHTML=`${name} <br> Repo Count: ${repo}`
+    image.setAttribute('src',img);
+    image.style.width="100"
+    image.height="100"
+
+
+    image.style.marginTop="10%"
+    image.style.marginLeft="20%"
+    userName.style.marginTop="10%"
+    userName.style.marginLeft="20%"
+    userName.style.paddingBottom="10%"
+    
+    div.style.marginBottom="50%"
+    div.style.marginTop="10%"
+    div.style.marginLeft="50%"
+    div.style.marginRight="30%"
+    div.style.backgroundColor="blue"
+    div.style.alignContent="center"
+    
+
+
+    div.appendChild(image);
+    div.appendChild(userName);
+    document.body.appendChild(div)
+
+    //document.getElementById('imageUrl').src=img
+
+
+        }
+    }
+    xhr.send()
+
+
+
+   
+    
+</script>
+</html>
